@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/attach', function () {
+    return view('attach.attach');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
