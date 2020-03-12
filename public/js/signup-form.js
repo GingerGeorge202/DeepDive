@@ -5,7 +5,7 @@ $().ready(function() {
                 email: true
             },
             phone_number: {
-                numeric: true
+                number: true
             }
         },
         messages: {
