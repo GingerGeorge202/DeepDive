@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a016b3a-40e5-46dc-8240-a4063af40be6" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/img/map.svg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/img/popup.jpg" afterDir="false" />
@@ -14,12 +15,16 @@
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> 60dad7de1eed9d689d8d89c737ef7f4ef1d4a38f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
@@ -128,6 +133,10 @@
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
     </include_path>
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+>>>>>>> 60dad7de1eed9d689d8d89c737ef7f4ef1d4a38f
   </component>
   <component name="ProjectId" id="1YlfY6ieSJbw7uWiAlEFaT1Yef9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -144,11 +153,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/migrations" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\DeepDive\database\migrations" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\DeepDive1\public" />
     </key>
@@ -183,6 +195,7 @@
       <updated>1583522145714</updated>
       <workItem from="1583522147777" duration="7567000" />
       <workItem from="1583571035318" duration="3690000" />
+<<<<<<< HEAD
       <workItem from="1583585947227" duration="50200000" />
     </task>
     <task id="LOCAL-00001" summary="add login and register">
@@ -191,6 +204,9 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1583692221533</updated>
+=======
+      <workItem from="1583749024647" duration="1076000" />
+>>>>>>> 60dad7de1eed9d689d8d89c737ef7f4ef1d4a38f
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />

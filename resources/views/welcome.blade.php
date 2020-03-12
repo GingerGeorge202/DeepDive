@@ -82,34 +82,34 @@
 
     <div id="gray" onclick="show('none')"></div>
     <div id="popup">
-        <div class="container-popup" style="background-image: url('public/img/popup.jpg');">
+        <div class="container-popup" style="background-image: url="{{asset('img/popup.jpg')}}" >
             <i class="fas fa-times close" onclick="show('none')"></i>
             <div class="form">
                 <h2 class="h2 center">Реєстрація</h2>
-                <form action="/" method="POST">
+                <form id="signupForm" action="/" method="POST">
                     {{ csrf_field() }}
                     <div class="wrap-input">
-                        <input id="name" class="input" name="name" type="text" placeholder="Ім'я">
+                        <input id="name" class="input" name="name" type="text" placeholder="Ім'я" required>
                         <i class="fas fa-user icon"></i>
                     </div>
 
                     <div class="wrap-input">
-                        <input id="surname" class="input" name="surname" type="text" placeholder="Прізвище">
+                        <input id="surname" class="input" name="surname" type="text" placeholder="Прізвище" required>
                         <i class="fas fa-user icon"></i>
                     </div>
 
                     <div class="wrap-input">
-                        <input id="email" class="input" name="email" type="email" placeholder="E-mail">
+                        <input id="email" class="input" name="email" type="email" placeholder="E-mail" required>
                         <i class="fas fa-envelope icon"></i>
                     </div>
 
                     <div class="wrap-input">
-                        <input id="phone_number" class="input" name="phone_number" type="tel" placeholder="Номер телефону">
+                        <input id="phone" class="input" name="phone" type="tel" placeholder="Номер телефону" required>
                         <i class="fas fa-phone-square-alt icon"></i>
                     </div>
 
                     <div class="wrap-input">
-                        <input id="city" class="input" name="city" type="text" placeholder="Місто">
+                        <input id="city" class="input" name="city" type="text" placeholder="Місто" required>
                         <i class="fas fa-map-marked-alt icon"></i>
                     </div>
 
@@ -345,71 +345,19 @@
   </div>
 </div>
 	</footer>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/slider.js')}}"></script>
   <script >
-    let slides = document.getElementsByClassName("slide");
-let INDEX = 0;
-
-console.log(slides.length)
-
-function render(n = 0) {
-
-    for(let i = 0; i < slides.length; i++){
-        slides[i].style.display = "none";
-    }
-
-    if(n == 0){
-        document.getElementById("left-button").disabled = true;
-    }
-
-    if(n > slides.length){
-        n = slides.length - 3;
-    }
-
-
-
-
-    for(let j = n;  j < n + 3; j++){
-
-
-        slides[j].style.display = "inline";
-
-        console.log( j);
-        if(n < j && j < n + 2)  {
-            slides[j].classList.add("active");
-        }else{
-            slides[j].classList.remove("active");
-        }
-    }
-    console.log("=====");
-}
-
-
-document.getElementById("left-button").onclick = function(){
-    --INDEX;
-    if(INDEX < 0){
-        INDEX = slides.length - 3;
-        console.log(INDEX);
-    }
-
-    render(INDEX);
-};
-
-document.getElementById("right-button").onclick = function(){
-    ++INDEX;
-    if(INDEX > slides.length - 3){
-        INDEX = 0
-
-    }
-    render(INDEX);
-};
-
-render(INDEX);
-
     function show(state) {
         document.querySelector('#popup').style.display = state;
         document.querySelector('#gray').style.display = state;
     }
   </script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="{{asset('js/signup-form.js')}}"></script>
 </body>
 </html>
