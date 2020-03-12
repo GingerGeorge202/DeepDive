@@ -14,7 +14,7 @@ class ChangeUsersCoursesTable extends Migration
     public function up()
     {
           Schema::table('user_courses', function (Blueprint $table) {
-         $table->foreign('id')->references('user_courses_id')->on('Feedbacks');
+//         $table->foreign('id')->references('user_courses_id')->on('Feedbacks');
 
         });
     }

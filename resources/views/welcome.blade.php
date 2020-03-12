@@ -79,6 +79,19 @@
 <a href="#"><button class="Palatino" id="join"><strong>ПРИЄДНАТИСЬ</strong> </button></a>
 	</header>
 
+    <form action="{{route('client.store')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <fieldset>
+            <legend>Контактная информация</legend>
+            <label>Имя<input name="name" type="text" required></label>
+            <label>Прізвище<input name="surname" type="text" required></label>
+            <label>E-mail<input name="email" type="email" required></label>
+            <label>Номер<input name="phone" type="text" required></label>
+            <label>Місто<input name="city" type="text" required></label>
+        </fieldset>
+        <input type="submit" value="Приєднатись" class="btn-outline-success btn">
+    </form>
+
 	<div class="Palatino" id="plan">
 		<p id="for">Заняття розраховані<br> для тих, хто планує:</p>
 <strong id="planinn">

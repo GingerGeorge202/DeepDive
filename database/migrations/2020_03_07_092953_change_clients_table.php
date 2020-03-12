@@ -14,7 +14,7 @@ class ChangeClientsTable extends Migration
     public function up()
     {
              Schema::table('clients', function (Blueprint $table) {
-           $table->foreign('id')->references('user_id')->on('users_courses');
+//           $table->foreign('id')->references('user_id')->on('users_courses');
 
                });
     }
