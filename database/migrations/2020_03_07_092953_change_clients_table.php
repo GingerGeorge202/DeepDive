@@ -13,10 +13,15 @@ class ChangeClientsTable extends Migration
      */
     public function up()
     {
-             Schema::table('clients', function (Blueprint $table) {
+
+           Schema::table('users__courses', function (Blueprint $table) {
+                   $table->foreignId('clients_id')->constrained();
+               });
+
+           /*  Schema::table('clients', function (Blueprint $table) {
            $table->foreign('id')->references('user_id')->on('users_courses');
 
-               });
+               });*/
     }
 
     /**
@@ -27,5 +32,6 @@ class ChangeClientsTable extends Migration
     public function down()
     {
         //
+        $table->dropForeign('users__courses_clients_id_foreign');
     }
 }
