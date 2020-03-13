@@ -26,7 +26,11 @@
                     <a href="{{route('client.edit',$client->id)}}" class="btn btn-outline-primary">Редагувати</a>
                 </th>
                 <th>
-                    <a href="{{route('client.destroy',$client->id)}}" class="btn btn-outline-primary">Видалити</a>
+                <form action="{{route('client.destroy',$client->id)}} " method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-primary">Видалити</button>
+                </form>
                 </th>
             </tr>
         @endforeach

@@ -30,8 +30,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Route::pattern('phone','/^\+380\d{3}\d{2}\d{2}\d{2}$/');
-
+//
         parent::boot();
     }
 

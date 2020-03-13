@@ -16,7 +16,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients= Client::all();
-        return view('admin.client',compact('clients'));
+        return view('client.index',compact('clients'));
     }
 
     /**
@@ -64,11 +64,9 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Client $client)
     {
-        $client=Client::find($id);
-
-        return view('admin.editclient', compact('client'));
+        return view('client.edit', compact('client'));
     }
 
     /**
@@ -78,10 +76,8 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, $id)
+    public function update(ClientRequest $request, Client $client)
     {
-        $client=Client::find($id);
-
         $client->name = $request->name;
         $client->surname = $request->surname;
         $client->email = $request->email;
@@ -99,10 +95,10 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
-        $client=Client::find($id);
         $client->delete();
+
         return redirect()->route('client.index');
     }
 }
