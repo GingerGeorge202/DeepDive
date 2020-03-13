@@ -86,7 +86,7 @@
             <i class="fas fa-times close" onclick="show('none')"></i>
             <div class="form">
                 <h2 class="h2 center">Реєстрація</h2>
-                <form id="signupForm" action="/" method="POST">
+                <form id="signupForm" action="{{route('client.store')}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="wrap-input">
                         <input id="name" class="input" name="name" type="text" placeholder="Ім'я" required>
