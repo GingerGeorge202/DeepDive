@@ -13,10 +13,15 @@ class ChangeUsersCoursesTable extends Migration
      */
     public function up()
     {
-          Schema::table('user_courses', function (Blueprint $table) {
-//         $table->foreign('id')->references('user_courses_id')->on('Feedbacks');
+         Schema::table('feedbacks', function (Blueprint $table) {
+                            $table->foreignId('users__courses_id')->constrained();
+                        });
 
-        });
+
+         /* Schema::table('user_courses', function (Blueprint $table) {
+         $table->foreign('id')->references('user_courses_id')->on('Feedbacks');
+
+        });*/
     }
 
     /**
@@ -27,5 +32,6 @@ class ChangeUsersCoursesTable extends Migration
     public function down()
     {
         //
+        $table->dropForeign('feedbacks_users__courses_id_foreign');
     }
 }

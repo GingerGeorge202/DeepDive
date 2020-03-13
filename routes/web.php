@@ -27,4 +27,12 @@ Route::resource('client', 'ClientController');
 //Route::delete('/client/client/{id}', 'ClientController@destroy')->name('client.destroy');
 //Route::post('/', 'ClientController@store')->name('client.store');
 
+});
+Route::get('/attach', function () {
+    return view('attach.attach');
+});
+
+
+Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');

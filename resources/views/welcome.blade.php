@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Deep Dive</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/90ec0072fa.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<header class="Palatino" >
@@ -76,21 +78,57 @@
 
   </div>
 </div>
-<a href="#"><button class="Palatino" id="join"><strong>ПРИЄДНАТИСЬ</strong> </button></a>
-	</header>
+<button class="Palatino" id="join" onclick="show('block')"><strong>ПРИЄДНАТИСЬ</strong> </button>
 
-    <form action="{{route('client.store')}}" method="post" enctype="multipart/form-data">
-        @csrf
-        <fieldset>
-            <legend>Контактная информация</legend>
-            <label>Имя<input name="name" type="text" required></label>
-            <label>Прізвище<input name="surname" type="text" required></label>
-            <label>E-mail<input name="email" type="email" required></label>
-            <label>Номер<input name="phone" type="text" required></label>
-            <label>Місто<input name="city" type="text" required></label>
-        </fieldset>
-        <input type="submit" value="Приєднатись" class="btn-outline-success btn">
-    </form>
+    <div id="gray" onclick="show('none')"></div>
+    <div id="popup">
+        <div class="container-popup" style="background-image: url="{{asset('img/popup.jpg')}}" >
+            <i class="fas fa-times close" onclick="show('none')"></i>
+            <div class="form">
+                <h2 class="h2 center">Реєстрація</h2>
+                <form id="signupForm" action="{{route('client.store')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="wrap-input">
+                        <input id="name" class="input" name="name" type="text" placeholder="Ім'я" required>
+                        <i class="fas fa-user icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="surname" class="input" name="surname" type="text" placeholder="Прізвище" required>
+                        <i class="fas fa-user icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="email" class="input" name="email" type="email" placeholder="E-mail" required>
+                        <i class="fas fa-envelope icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="phone" class="input" name="phone" type="tel" placeholder="Номер телефону" required>
+                        <i class="fas fa-phone-square-alt icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="city" class="input" name="city" type="text" placeholder="Місто" required>
+                        <i class="fas fa-map-marked-alt icon"></i>
+                    </div>
+
+                    {{--                <div class="form-group">--}}
+                    {{--                    <label>--}}
+                    {{--                        {{ Form::checkbox('is_admin', 1, false, ['id' => 'is_admin']) }}--}}
+                    {{--                        Is admin--}}
+                    {{--                    </label>--}}
+                    {{--                </div>--}}
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Приєднатись</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+	</header>
 
 	<div class="Palatino" id="plan">
 		<p id="for">Заняття розраховані<br> для тих, хто планує:</p>
@@ -307,65 +345,19 @@
   </div>
 </div>
 	</footer>
+    <script src="{{asset('js/slider.js')}}"></script>
   <script >
-    let slides = document.getElementsByClassName("slide");
-let INDEX = 0;
-
-console.log(slides.length)
-
-function render(n = 0) {
-
-    for(let i = 0; i < slides.length; i++){
-        slides[i].style.display = "none";
+    function show(state) {
+        document.querySelector('#popup').style.display = state;
+        document.querySelector('#gray').style.display = state;
     }
-
-    if(n == 0){
-        document.getElementById("left-button").disabled = true;
-    }
-
-    if(n > slides.length){
-        n = slides.length - 3;
-    }
-
-
-
-
-    for(let j = n;  j < n + 3; j++){
-
-
-        slides[j].style.display = "inline";
-
-        console.log( j);
-        if(n < j && j < n + 2)  {
-            slides[j].classList.add("active");
-        }else{
-            slides[j].classList.remove("active");
-        }
-    }
-    console.log("=====");
-}
-
-
-document.getElementById("left-button").onclick = function(){
-    --INDEX;
-    if(INDEX < 0){
-        INDEX = slides.length - 3;
-        console.log(INDEX);
-    }
-
-    render(INDEX);
-};
-
-document.getElementById("right-button").onclick = function(){
-    ++INDEX;
-    if(INDEX > slides.length - 3){
-        INDEX = 0
-
-    }
-    render(INDEX);
-};
-
-render(INDEX);
   </script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="{{asset('js/signup-form.js')}}"></script>
 </body>
 </html>
