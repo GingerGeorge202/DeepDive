@@ -1,8 +1,6 @@
 let slides = document.getElementsByClassName("slide");
 let INDEX = 0;
 
-console.log(slides.length)
-
 function render(n = 0) {
 
     for(let i = 0; i < slides.length; i++){
@@ -25,14 +23,12 @@ function render(n = 0) {
 
         slides[j].style.display = "inline";
 
-        console.log( j);
         if(n < j && j < n + 2)  {
             slides[j].classList.add("active");
         }else{
             slides[j].classList.remove("active");
         }
     }
-    console.log("=====");
 }
 
 

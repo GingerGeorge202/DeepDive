@@ -275,8 +275,8 @@ a{
 #popup{
     display: none;
     width: 35%;
-    height: 520px;
-    margin: 100px auto 50px auto;
+    height: 540px;
+    margin: 60px auto 50px auto;
     padding: 15px;
 
     background-color: #1b4b72;
@@ -288,6 +288,7 @@ a{
     right: 0;
     top: -30px;
     bottom: 0;
+    overflow: auto;
 }
 
 .container-popup{

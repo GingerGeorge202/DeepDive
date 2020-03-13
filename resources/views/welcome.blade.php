@@ -82,7 +82,7 @@
 
     <div id="gray" onclick="show('none')"></div>
     <div id="popup">
-        <div class="container-popup" style="background-image: url="{{asset('img/popup.jpg')}}" >
+        <div class="container-popup" style="background-image: url="{{asset('public/img/popup.jpg')}}" >
             <i class="fas fa-times close" onclick="show('none')"></i>
             <div class="form">
                 <h2 class="h2 center">Реєстрація</h2>
