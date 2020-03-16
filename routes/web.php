@@ -20,19 +20,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('client', 'ClientController');
-//Route::get('client/', 'ClientController@store')->name('client.store');
-//Route::get('/client/client', 'ClientController@index')->name('client.index');
-//Route::get('/client/client/edit/{id}', 'ClientController@edit')->name('client.edit');
-//Route::patch('/client/client/edit/{id}', 'ClientController@update')->name('client.update');
-//Route::delete('/client/client/{id}', 'ClientController@destroy')->name('client.destroy');
-//Route::post('/', 'ClientController@store')->name('client.store');
+//Route::get('post/', 'PostController@index')->name('post.index');
+//Route::get('post/create', 'PostController@create')->name('post.create');
+//Route::get('post/show/{id}', 'PostController@show')->name('post.show');
+//Route::get('post/edit/{id}', 'PostController@edit')->name('post.edit');
+//Route::post('post/', 'PostController@store')->name('post.store');
+//Route::patch('post/show/{id}', 'PostController@update')->name('post.update');
+//Route::delete('post/{id}', 'PostController@destroy')->name('post.destroy');
 
-});
-Route::get('/attach', function () {
-    return view('attach.attach');
-});
+Route::resource('slider', 'SliderController');
+//Route::get('image-gallery', 'ImageGalleryController@index');
+//Route::post('image-gallery', 'ImageGalleryController@upload');
+//Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');
 
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
