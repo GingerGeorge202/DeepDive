@@ -81,11 +81,10 @@
 <button class="Palatino" id="join" onclick="show('block')"><strong>ПРИЄДНАТИСЬ</strong> </button>
 
     <div id="gray" onclick="show('none')"></div>
-        <div id="popup">
-{{--    <div id="popup" style="background-image: url({{asset('img/popup.jpg')}});background-size: cover;--}}
-{{--        background-position: center;--}}
-{{--        background-attachment: fixed; ">--}}
-        <div class="container-popup">
+
+    <div id="popup" style="background-image: url({{asset('img/popup.jpg')}});background-size: cover;
+        background-position: center;">
+        <div class="container-popup" >
             <i class="fas fa-times close" onclick="show('none')"></i>
             <div class="form">
                 <h2 class="h2 center">Реєстрація</h2>

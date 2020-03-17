@@ -17,7 +17,7 @@
                 <a class="nav-link" href="{{route('/')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="{{route('course.index')}}">Курс</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
