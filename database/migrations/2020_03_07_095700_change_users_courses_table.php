@@ -14,7 +14,7 @@ class ChangeUsersCoursesTable extends Migration
     public function up()
     {
          Schema::table('feedbacks', function (Blueprint $table) {
-                            $table->foreignId('users__courses_id')->constrained();
+                            $table->foreignId('users__courses_id')->nullable()->constrained();
                         });
 
 

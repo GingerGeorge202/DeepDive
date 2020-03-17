@@ -20,6 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('client', 'ClientController');
+Route::resource('course', 'CourseController');
+Route::resource('feedback', 'FeedbackController');
 //Route::get('client/', 'ClientController@store')->name('client.store');
 //Route::get('/client/client', 'ClientController@index')->name('client.index');
 //Route::get('/client/client/edit/{id}', 'ClientController@edit')->name('client.edit');
@@ -27,7 +29,6 @@ Route::resource('client', 'ClientController');
 //Route::delete('/client/client/{id}', 'ClientController@destroy')->name('client.destroy');
 //Route::post('/', 'ClientController@store')->name('client.store');
 
-});
 Route::get('/attach', function () {
     return view('attach.attach');
 });
