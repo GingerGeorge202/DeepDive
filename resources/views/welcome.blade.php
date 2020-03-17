@@ -81,6 +81,7 @@
 <button class="Palatino" id="join" onclick="show('block')"><strong>ПРИЄДНАТИСЬ</strong> </button>
 
     <div id="gray" onclick="show('none')"></div>
+
     <div id="popup" style="background-image: url({{asset('img/popup.jpg')}});background-size: cover;
         background-position: center;">
         <div class="container-popup" >
@@ -241,18 +242,32 @@
 </div>
 		<div class="wrapper">
         <div class="slides">
-           <div class="slide"><img src="img/gal1.png" alt="#"></div>
-           <div class="slide"><img src="img/gal2.png" alt="#"></div>
-           <div class="slide"><img src="img/gal3.png" alt="#"></div>
-           <div class="slide"><img src="img/gal4.png" alt="#"></div>
-           <div class="slide"><img src="img/gal5.png" alt="#"></div>
-           <div class="slide"><img src="img/gal6.png"  alt="#"></div>
-           <div class="slide"><img src="img/images.jpg"alt="#"></div>
-            <div class="slide"><img src="img/hh.jpg"  alt="#"></div>
-            <div class="slide"><img src="img/gg.jpg" alt="#"></div>
-            <div class="slide"><img src="img/kpk10.JPG"  alt="#"></div>
-            <div class="slide"><img src="img/ff.jpg"  alt="#"></div>
-            <div class="slide"><img src="img/images.jpg" alt="#"></div>
+            @foreach ($url as $key => $url)
+                <div class="slide">
+                    <img src="{{ $url }}">
+                </div>
+            @endforeach
+
+
+
+
+
+
+{{--            @foreach ($images ?? ''->all() as $image)--}}
+{{--               <div class="slide">{{ $image }}</div>--}}
+{{--               <div class="slide"><img src="img/gal2.png" alt="#"></div>--}}
+{{--                {{ $key == 0 ? ' active' : '' }}--}}
+{{--               <div class="slide"><img src="img/gal3.png" alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/gal4.png" alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/gal5.png" alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/gal6.png"  alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/images.jpg"alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/hh.jpg"  alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/gg.jpg" alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/kpk10.JPG"  alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/ff.jpg"  alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/images.jpg" alt="#"></div>--}}
+{{--            @endforeach--}}
         </div>
         <div class="buttons-block">
             <div id="left-button"><img src="img/left.png"></div>
