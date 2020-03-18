@@ -38,9 +38,10 @@ Route::resource('client', 'ClientController');
 //Route::delete('post/{id}', 'PostController@destroy')->name('post.destroy');
 
 Route::resource('slider', 'SliderController');
-//Route::get('image-gallery', 'ImageGalleryController@index');
-//Route::post('image-gallery', 'ImageGalleryController@upload');
-//Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');
+
+Route::get('image-gallery', 'ImageGalleryController@index');
+Route::post('image-gallery', 'ImageGalleryController@store');
+Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -242,9 +242,9 @@
 </div>
 		<div class="wrapper">
         <div class="slides">
-            @foreach ($url as $key => $url)
+            @foreach ($sliderImages as $image)
                 <div class="slide">
-                    <img src="{{ $url }}">
+                    <img src="{{asset($image->pathImage)}}" alt="{{$image->title}}">
                 </div>
             @endforeach
 

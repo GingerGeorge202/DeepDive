@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
@@ -15,7 +16,7 @@ class SliderController extends Controller
     public function index()
     {
         $images = Slider::get();
-        return view('gallery.gallery', compact('images'));
+        return view('gallery.slider', compact('images'));
     }
 
     /**
@@ -36,16 +37,48 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
 
-        $input['image'] = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('storage'), $input['image']);
+//        $input['title'] = $request->title;
+//
+//        $input['image'] = time().'.'.$request->image->getClientOriginalExtension();
+//        $request->image->move(public_path('storage'), $input['image']);
+//
+//        $pathImage = Storage::putFile('public', $request->file('storage'));
+//        $url = Storage::url($pathImage);
+//        $input['pathImage'] = $url;
+//
+//        Slider::create($input);
 
-        $input['title'] = $request->title;
-        Slider::create($input);
+
+        $files = $request->file('storage');
+
+        if(!empty($files)) :
+            foreach($files as $file) :
+
+                $input['title'] = $request->title;
+
+                $input['image'] = time().$file->getClientOriginalName();
+                $request->image->move(public_path('slider_img'), $input['image']);
+
+                $pathImage = Storage::putfile('public/slider_img', $file);
+                $url = Storage::url($pathImage);
+                $input['pathImage'] = $url;
+
+                Slider::create($input);
+
+            endforeach;
+        endif;
+
+
+//        $newImage = new Slider();
+//
+//        $newImage->title = $request->title;
+//        $pathImage = Storage::putFile('public', $request->file('storage'));
+//        $url = Storage::url($pathImage);
+//        $newImage->pathImage = $url;
+//        $newImage->image = time().'.'.$request->image->getClientOriginalExtension();
+//        $request->image->move(public_path('storage'), $newImage->image);
+//        $newImage->save();
 
         return back()
             -> with('success', 'Image Uploaded successfully.');
@@ -91,9 +124,11 @@ class SliderController extends Controller
      * @param  \App\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         Slider::find($id)->delete();
+        Storage::delete("public/{$request->pathImage}");
+
         return back()
             ->with('success', 'Image removed successfully');
     }

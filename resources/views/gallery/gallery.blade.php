@@ -36,7 +36,7 @@
 
 
     <h3>Laravel - Image Gallery CRUD Example</h3>
-    <form action="{{ url('/slider') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('/image-gallery') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">
 
 
         {!! csrf_field() !!}
@@ -94,7 +94,7 @@
                                 <small class='text-muted'>{{ $image->title }}</small>
                             </div> <!-- text-center / end -->
                         </a>
-                        <form action="{{ url('/slider',$image->id) }}" method="POST">
+                        <form action="{{ url('/image-gallery',$image->id) }}" method="POST">
                             <input type="hidden" name="_method" value="delete">
                             {!! csrf_field() !!}
                             <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
