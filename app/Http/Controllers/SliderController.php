@@ -16,17 +16,36 @@ class SliderController extends Controller
     public function index()
     {
         $images = Slider::get();
-        return view('gallery.slider', compact('images'));
+        return view('gallery.gallery', compact('images'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+//        if($request->hasfile('filenames'))
+//        {
+//            foreach($request->file('filenames') as $file)
+//            {
+//                $name = time().'.'.$file->extension();
+//                $file->move(public_path().'/files/', $name);
+//                $data[] = $name;
+//            }
+//        }
+//
+//
+//        $file= new File();
+//        $file->filenames=json_encode($data);
+//        $file->save();
+//
+//
+//        $files = $request->file('storage');
+
+
     }
 
     /**
@@ -50,26 +69,6 @@ class SliderController extends Controller
 //        Slider::create($input);
 
 
-        $files = $request->file('storage');
-
-        if(!empty($files)) :
-            foreach($files as $file) :
-
-                $input['title'] = $request->title;
-
-                $input['image'] = time().$file->getClientOriginalName();
-                $request->image->move(public_path('slider_img'), $input['image']);
-
-                $pathImage = Storage::putfile('public/slider_img', $file);
-                $url = Storage::url($pathImage);
-                $input['pathImage'] = $url;
-
-                Slider::create($input);
-
-            endforeach;
-        endif;
-
-
 //        $newImage = new Slider();
 //
 //        $newImage->title = $request->title;
@@ -80,8 +79,22 @@ class SliderController extends Controller
 //        $request->image->move(public_path('storage'), $newImage->image);
 //        $newImage->save();
 
+
+
+
+                $file = new Slider();
+
+                $file->title = $request->title;
+                $path = Storage::putFile('public',$request->file('image'));
+                $url=Storage::url($path);
+                $file->pathImage = $url;
+
+                $file->save();
+
         return back()
             -> with('success', 'Image Uploaded successfully.');
+
+
     }
 
     /**

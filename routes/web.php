@@ -37,11 +37,11 @@ Route::resource('client', 'ClientController');
 //Route::patch('post/show/{id}', 'PostController@update')->name('post.update');
 //Route::delete('post/{id}', 'PostController@destroy')->name('post.destroy');
 
-Route::resource('slider', 'SliderController');
+//Route::resource('image-gallery', 'SliderController');
 
-Route::get('image-gallery', 'ImageGalleryController@index');
-Route::post('image-gallery', 'ImageGalleryController@store');
-Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');
+Route::get('image-gallery', 'ImageGalleryController@index')->name('image-gallery');
+Route::post('image-gallery', 'ImageGalleryController@store')->name('image-gallery.store');
+Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy')->name('image-gallery.destroy');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -38,11 +38,14 @@ class ClientController extends Controller
     public function store(ClientRequest $request)
     {
         $client=new Client();
-        $client->name = $request->name;
-        $client->surname = $request->surname;
-        $client->email = $request->email;
-        $client->phone = $request->phone;
-        $client->city = $request->city;
+        $client=$request->all();
+
+//        $client->name = $request->name;
+//        $client->surname = $request->surname;
+//        $client->email = $request->email;
+//        $client->phone = $request->phone;
+//        $client->city = $request->city;
+
         $client->save();
         return redirect()->route('/');
     }

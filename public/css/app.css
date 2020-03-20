@@ -38,6 +38,22 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+.gallery {
+    display: inline-block;
+    margin-top: 20px;
+}
+.close-icon{
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+    padding: 5px 8px;
+}
+.form-image-upload{
+    background: #e8e8e8 none repeat scroll 0 0;
+    padding: 15px;
+}
+
 *,
 *::before,
 *::after {
@@ -10881,4 +10897,5 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
 

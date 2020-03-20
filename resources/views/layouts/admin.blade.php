@@ -31,5 +31,6 @@
 <h1>im admin</h1>
 @yield('content')
 <script src="{{asset('js/app.js')}}"></script>
+
 </body>
 </html>
