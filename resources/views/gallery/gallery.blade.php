@@ -36,7 +36,7 @@
 
 
     <h3>Laravel - Image Gallery CRUD Example</h3>
-    <form action="{{ url('/image-gallery') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('image-gallery.store') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">
 
 
         {!! csrf_field() !!}
@@ -88,13 +88,13 @@
             @if($images->count())
                 @foreach($images as $image)
                     <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                        <a class="thumbnail fancybox" rel="ligthbox" href="/storage/{{ $image->image }}">
-                            <img class="img-responsive" alt="" src="/storage/{{ $image->image }}" />
+                        <a class="thumbnail fancybox" rel="ligthbox" href="{{ $image->pathImage }}">
+                            <img class="img-responsive" alt="" src="{{ $image->pathImage }}" />
                             <div class='text-center'>
                                 <small class='text-muted'>{{ $image->title }}</small>
                             </div> <!-- text-center / end -->
                         </a>
-                        <form action="{{ url('/image-gallery',$image->id) }}" method="POST">
+                        <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST">
                             <input type="hidden" name="_method" value="delete">
                             {!! csrf_field() !!}
                             <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
