@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ImageGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageGalleryController extends Controller
 {
@@ -28,36 +29,39 @@ class ImageGalleryController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-        ]);
+//        $this->validate($request, [
+//            'title' => 'required',
+//            'pathImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+//        ]);
 
-        $input['title'] = $request->title;
+        $file = new ImageGallery();
 
-        $input['image'] = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('storage'), $input['image']);
+        $file->title = $request->title;
+        $path = Storage::putFile('public',$request->file('image'));
+        $url=Storage::url($path);
+        $file->pathImage = $url;
 
-//        $pathImage = Storage::putFile('public', $request->file('storage'));
-//        $url = Storage::url($pathImage);
-//        $input['pathImage'] = $url;
-
-        ImageGallery::create($input);
+        $file->save();
 
         return back()
             -> with('success', 'Image Uploaded successfully.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Slider  $slider
+     * @param  \App\ImageGallery  $images
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy($id, ImageGallery $images)
     {
         ImageGallery::find($id)->delete();
+
+        $dfile=$images->pathImage;
+        $file = basename($dfile);
+        Storage::delete('public/'.$file);
 
         return back()
             ->with('success', 'Image removed successfully');
