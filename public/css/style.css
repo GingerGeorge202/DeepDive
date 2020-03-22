@@ -389,6 +389,10 @@ input {
     cursor: pointer;
 }
 
+.wrapper4{
+    width: 80%;
+}
+
 /*Nigtmare*/
 
 @media all and (max-width: 1200px) {

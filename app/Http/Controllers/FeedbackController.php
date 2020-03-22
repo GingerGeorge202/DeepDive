@@ -27,7 +27,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        return view('feedback.create');
     }
 
     /**
@@ -38,7 +38,8 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Feedbacks::create($request->all());
+        return redirect()->route('feedback.index');
     }
 
     /**
@@ -47,10 +48,6 @@ class FeedbackController extends Controller
      * @param  \App\Feedbacks  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function show(Feedbacks $feedback)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -96,6 +93,8 @@ class FeedbackController extends Controller
      */
     public function destroy(Feedbacks $feedback)
     {
-        //
+        $feedback->delete();
+
+        return redirect()->route('feedback.index');
     }
 }

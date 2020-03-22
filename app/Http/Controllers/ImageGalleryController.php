@@ -30,7 +30,7 @@ class ImageGalleryController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 
         $input['title'] = $request->title;
@@ -54,7 +54,7 @@ class ImageGalleryController extends Controller
      * @param  \App\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    
+
     public function destroy($id)
     {
         ImageGallery::find($id)->delete();

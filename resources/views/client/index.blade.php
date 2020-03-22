@@ -16,7 +16,8 @@
         <tbody>
         @foreach($clients as $client)
             <tr>
-                <th scope="row">{{$client->id}}</th>
+                <th scope="row">{{$loop->iteration}}
+                </th>
                 <td>{{$client->name}}</td>
                 <td>{{$client->surname}}</td>
                 <td>{{$client->email}}</td>
