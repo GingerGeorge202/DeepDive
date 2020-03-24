@@ -14,10 +14,10 @@ class CreateFeedbacksTable extends Migration
     public function up()
     {
         Schema::create('feedbacks', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_course_id');
-            $table->string('date');
-
+            $table->bigIncrements('id');
+            $table->string('author')->nullable();
+            $table->text('describe')->nullable();
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

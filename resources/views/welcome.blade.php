@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Deep Dive</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://kit.fontawesome.com/90ec0072fa.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<header class="Palatino" >
@@ -76,106 +78,91 @@
 
   </div>
 </div>
-<a href="#"><button class="Palatino" id="join"><strong>ПРИЄДНАТИСЬ</strong> </button></a>
+<button class="Palatino" id="join" onclick="show('block')"><strong>ПРИЄДНАТИСЬ</strong> </button>
+
+    <div id="gray" onclick="show('none')"></div>
+
+    <div id="popup" style="background-image: url({{asset('img/popup.jpg')}});background-size: cover;
+        background-position: center;">
+        <div class="container-popup" >
+            <i class="fas fa-times close" onclick="show('none')"></i>
+            <div class="form">
+                <h2 class="h2 center">Реєстрація</h2>
+                <form id="signupForm" action="{{route('client.store')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="wrap-input">
+                        <input id="name" class="input" name="name" type="text" placeholder="Ім'я" required>
+                        <i class="fas fa-user icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="surname" class="input" name="surname" type="text" placeholder="Прізвище" required>
+                        <i class="fas fa-user icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="email" class="input" name="email" type="email" placeholder="E-mail" required>
+                        <i class="fas fa-envelope icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="phone" class="input" name="phone" type="tel" placeholder="Номер телефону" required>
+                        <i class="fas fa-phone-square-alt icon"></i>
+                    </div>
+
+                    <div class="wrap-input">
+                        <input id="city" class="input" name="city" type="text" placeholder="Місто" required>
+                        <i class="fas fa-map-marked-alt icon"></i>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Приєднатись</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 	</header>
 
 	<div class="Palatino" id="plan">
-		<p id="for">Заняття розраховані<br> для тих, хто планує:</p>
-<strong id="planinn">
-		<div  class="container plan_in Palatino">
+        <p id="for">Заняття розраховані<br> для тих, хто планує:</p>
+        <strong id="planinn">
+		<div  class="container-fluid wrapper4 plan_in Palatino ">
   <div class="row">
-<div class="col-sm">
-       <p> </p>
-    </div>
-    <div class="col-sm-2">
-      <img src="img/plan1.png">
-    </div>
-    <div class="col-md-" >
-    	<br>
-     <p class="descr" id="p1"> Змінити роботу на кращу -<br> де English - Must Have</p>
-    </div>
-    <div class="col-sm">
-       <p> </p>
-    </div>
-    <div class="col-sm void">
-       <p> </p>
-    </div>
-    <div class="col-sm-2">
-      <img src="img/plan2.png">
-    </div>
-    <div class="col-md-">
-    	<br>
-     <p class="descr" id="p2">релокацію за кордон</p>
-    </div>
-    <div class="col-sm void">
-       <p> </p>
-    </div>
-  </div>
 
-  <div class="row plan_in second">
+      @foreach($courses as $course)
 
-    <div class="col-sm">
-       <p> </p>
-    </div>
-    <div class="col-sm-2 " id="img21">
-      <img src="img/plan3.png">
-    </div>
-    <div class="col-md-" >
-    	<br>
-     <p class="descr" id="p3">пройти співбесіду<br>в компанію з іноземним капіталом</p>
-    </div>
-    <div class="col-sm">
-       <p> </p>
-    </div>
-    <div class="col-sm">
-       <p> </p>
-    </div>
-    <div class="col-sm-2 " id="img22">
-      <img src="img/plan4.png">
-    </div>
-    <div class="col-md-" >
-    	<br>
-     <p class="descr">стрімкий кар'єрний ріст</p>
-    </div>
-    <div class="col-sm void">
-       <p> </p>
-    </div>
-  </div>
+          @if($loop->odd)
 
-  <div class="row plan_in "  id="third" >
-<div class="col-sm " >
-       <p> </p>
-    </div>
-    <div class="col-sm-2 " id="img31">
-      <img src="img/plan5.png">
-    </div>
-    <div class="col-md-" >
-    	<br> <p class="descr">навчання за кордоном </p>
+              <div class="col-3 my-4 ml-auto text-center" id="img11">
+                  <img src="{{$course->img}}">
+              </div>
+              <div class="col-3 my-4 mr-auto" >
+                  <br>
+                  <p class="descr text-left" id="p1">{{$course->describe}}</p>
+              </div>
 
+          @else
+
+              <div class="col-3 my-4 ml-auto text-center" id="img12">
+                  <img src="{{$course->img}}">
+              </div>
+              <div class="col-3 my-4 mr-auto text-left">
+                  <br>
+                  <p class="descr text-left"  id="p2">{{$course->describe}}</p>
+              </div>
+
+          @endif
+
+      @endforeach
+
+            </div>
 
     </div>
-
-    <div class="col-sm">
-       <p> </p>
-    </div>
-    <div class="col-sm-2">
-       <p> </p>
-    </div>
-
-    <div class="col-sm-2 " id="img32">
-      <img src="img/plan6.png">
-    </div>
-    <div class="col-md-">
-    	<br>
-     <p class="descr" id="last_descr"> спілкування з англомовним<br> клієнтом чи Native Speaker</p>
-    </div>
-    <div class="col-sm void">
-       <p> </p>
-    </div>
-  </div>
-</div>
 </strong>
-	</div>
+    </div>
+
 	<div id="galery">
     <div class="container Palatino" id="gal_top">
   <div class="row">
@@ -189,18 +176,35 @@
 </div>
 		<div class="wrapper">
         <div class="slides">
-           <div class="slide"><img src="img/gal1.png" alt="#"></div>
-           <div class="slide"><img src="img/gal2.png" alt="#"></div>
-           <div class="slide"><img src="img/gal3.png" alt="#"></div>
-           <div class="slide"><img src="img/gal4.png" alt="#"></div>
-           <div class="slide"><img src="img/gal5.png" alt="#"></div>
-           <div class="slide"><img src="img/gal6.png"  alt="#"></div>
-           <div class="slide"><img src="img/images.jpg"alt="#"></div>
-            <div class="slide"><img src="img/hh.jpg"  alt="#"></div>
-            <div class="slide"><img src="img/gg.jpg" alt="#"></div>
-            <div class="slide"><img src="img/kpk10.JPG"  alt="#"></div>
-            <div class="slide"><img src="img/ff.jpg"  alt="#"></div>
-            <div class="slide"><img src="img/images.jpg" alt="#"></div>
+            @foreach ($sliderImages as $image)
+                <div class="slide">
+                    <img src="{{asset($image->pathImage)}}" alt="{{$image->title}}">
+                </div>
+{{--            <div class="slide">--}}
+{{--                <img src="">--}}
+{{--            </div>--}}
+            @endforeach
+
+
+
+
+
+
+{{--            @foreach ($images ?? ''->all() as $image)--}}
+{{--               <div class="slide">{{ $image }}</div>--}}
+{{--               <div class="slide"><img src="img/gal2.png" alt="#"></div>--}}
+{{--                {{ $key == 0 ? ' active' : '' }}--}}
+{{--               <div class="slide"><img src="img/gal3.png" alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/gal4.png" alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/gal5.png" alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/gal6.png"  alt="#"></div>--}}
+{{--               <div class="slide"><img src="img/images.jpg"alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/hh.jpg"  alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/gg.jpg" alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/kpk10.JPG"  alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/ff.jpg"  alt="#"></div>--}}
+{{--                <div class="slide"><img src="img/images.jpg" alt="#"></div>--}}
+{{--            @endforeach--}}
         </div>
         <div class="buttons-block">
             <div id="left-button"><img src="img/left.png"></div>
@@ -211,49 +215,33 @@
 	<div id="feadback" class="Palatino">
     <div id="feadhead"><strong> Відгуки<br>наших випусників</strong></div>
     <div class="container feadmargin">
-  <div class="row" id="row1">
-    <div class="col-sm face" id="face1">
-      <img  src="img/face1.PNG">
-    </div>
-    <div class="col about">
-      <p ><em>
-      У мене давно було бажання відвідувати цей курс, тому, коли розпочався набір, без вагань вирішила, що треба йти. Основною зміною після курсу є те, що я почала не боятись розмовляти і гадаю, що кожному учаснику вдалося подолати мовний бар'єр. Зараз змінила роботу і кожен день практикую набуті під час курсу знання. Дякую всім викладачам. Було круто, корисно, інколи весело і дійсно ефективно.
-    </em></p>
-    </div>
 
+      @foreach($feedbacks as $feedback)
 
-  </div>
-</div>
-     <div class="container ">
-  <div class="row" id="row2">
-   <div class="col-sm">
-     <p></p>
-   </div>
-    <div class="col-sm-4 about2">
-     <p><em>
-      Якщо тобі потрібно прокачати свій англійський в короткі строки - цей курс саме те. Але це не означає, що тобі потрібн лише відвідувати пари, витрачаючи на це три години на день, та вже після закінчення курсу ти будеш комфортно розуміти англомовного співрозмовника. Ні, так воно не працює. Як мінімум, тобі потрібно не лінитися і повторювати матеріал вдома.
-    </em></p>
-    </div>
-    <div class="col-sm face">
-      <img  src="img/face2.PNG">
+          @if($loop->odd)
 
-    </div>
+                <div class="row" id="row1">
+                  <div class="col-5 mr-auto">
+                      <img src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg'}}">
+                  </div>
+                  <div class="col-4 m-auto">
+                      <p class="descr" id="p1"><em>{{$feedback->describe}}</em></p>
+                  </div>
+              </div>
 
+          @else
 
-  </div>
-</div>
-    <div class="container feadmargin">
-  <div class="row" id="row3">
-    <div class="col-sm face" id="face3">
-      <img id="img3"  src="img/face3.PNG">
-    </div>
-    <div class="col-sm about3">
-      <p><em>
-    Я задоволена тим, що було багато граматики, а також дуже задововолена роботою викладачів. В кожної з них свої підходи та методи, що також є плюсом, адже ти не звикаєш до однієї манери викладання. Піри з носіями мови давали впевненість в тому, що  принципі, тебе розуміють краще, ніж ти собі думав. Завдяки цьому курсу, англійської в моєму житті стало більше, я почала нею говорити вдома та думати про якісь звичні для мене речі. Якщо про рівень, то він однозначно підвищився і я це відчуваю. Рекомендую всім без винятку....</em></p>
-    </div>
+              <div class="row ">
+                  <div class="col-4 m-auto">
+                      <p class="descr" id="p1"><em>{{$feedback->describe}}</em></p>
+                  </div>
+                  <div class="col-5 ml-auto">
+                      <img src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg'}}">
+                  </div>
+              </div>
 
-
-  </div>
+          @endif
+      @endforeach
 </div>
 
 	</div>
@@ -294,65 +282,19 @@
   </div>
 </div>
 	</footer>
+    <script src="{{asset('js/slider.js')}}"></script>
   <script >
-    let slides = document.getElementsByClassName("slide");
-let INDEX = 0;
-
-console.log(slides.length)
-
-function render(n = 0) {
-
-    for(let i = 0; i < slides.length; i++){
-        slides[i].style.display = "none";
+    function show(state) {
+        document.querySelector('#popup').style.display = state;
+        document.querySelector('#gray').style.display = state;
     }
-
-    if(n == 0){
-        document.getElementById("left-button").disabled = true;
-    }
-
-    if(n > slides.length){
-        n = slides.length - 3;
-    }
-
-
-
-
-    for(let j = n;  j < n + 3; j++){
-
-
-        slides[j].style.display = "inline";
-
-        console.log( j);
-        if(n < j && j < n + 2)  {
-            slides[j].classList.add("active");
-        }else{
-            slides[j].classList.remove("active");
-        }
-    }
-    console.log("=====");
-}
-
-
-document.getElementById("left-button").onclick = function(){
-    --INDEX;
-    if(INDEX < 0){
-        INDEX = slides.length - 3;
-        console.log(INDEX);
-    }
-
-    render(INDEX);
-};
-
-document.getElementById("right-button").onclick = function(){
-    ++INDEX;
-    if(INDEX > slides.length - 3){
-        INDEX = 0
-
-    }
-    render(INDEX);
-};
-
-render(INDEX);
   </script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="{{asset('js/signup-form.js')}}"></script>
 </body>
 </html>
