@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Deep Dive</title>
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="https://kit.fontawesome.com/90ec0072fa.js" crossorigin="anonymous"></script>
@@ -129,7 +130,7 @@
             </div>
         </div>
     </div>
-
+</div>
 	</header>
 
 	<div class="Palatino" id="plan">
@@ -247,27 +248,6 @@
                     <img src="{{asset($image->pathImage)}}" alt="{{$image->title}}">
                 </div>
             @endforeach
-
-
-
-
-
-
-{{--            @foreach ($images ?? ''->all() as $image)--}}
-{{--               <div class="slide">{{ $image }}</div>--}}
-{{--               <div class="slide"><img src="img/gal2.png" alt="#"></div>--}}
-{{--                {{ $key == 0 ? ' active' : '' }}--}}
-{{--               <div class="slide"><img src="img/gal3.png" alt="#"></div>--}}
-{{--               <div class="slide"><img src="img/gal4.png" alt="#"></div>--}}
-{{--               <div class="slide"><img src="img/gal5.png" alt="#"></div>--}}
-{{--               <div class="slide"><img src="img/gal6.png"  alt="#"></div>--}}
-{{--               <div class="slide"><img src="img/images.jpg"alt="#"></div>--}}
-{{--                <div class="slide"><img src="img/hh.jpg"  alt="#"></div>--}}
-{{--                <div class="slide"><img src="img/gg.jpg" alt="#"></div>--}}
-{{--                <div class="slide"><img src="img/kpk10.JPG"  alt="#"></div>--}}
-{{--                <div class="slide"><img src="img/ff.jpg"  alt="#"></div>--}}
-{{--                <div class="slide"><img src="img/images.jpg" alt="#"></div>--}}
-{{--            @endforeach--}}
         </div>
         <div class="buttons-block">
             <div id="left-button"><img src="img/left.png"></div>
@@ -361,7 +341,6 @@
   </div>
 </div>
 	</footer>
-    <script src="{{asset('js/slider.js')}}"></script>
   <script >
     function show(state) {
         document.querySelector('#popup').style.display = state;
@@ -375,5 +354,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="{{asset('js/signup-form.js')}}"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{{asset('js/slider.js')}}"></script>
 </body>
 </html>

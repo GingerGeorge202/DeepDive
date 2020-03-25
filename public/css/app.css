@@ -38,22 +38,6 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.gallery {
-    display: inline-block;
-    margin-top: 20px;
-}
-.close-icon{
-    border-radius: 50%;
-    position: absolute;
-    right: 5px;
-    top: -10px;
-    padding: 5px 8px;
-}
-.form-image-upload{
-    background: #e8e8e8 none repeat scroll 0 0;
-    padding: 15px;
-}
-
 *,
 *::before,
 *::after {
@@ -83,7 +67,7 @@ section {
 body {
   margin: 0;
   font-family: "Nunito", sans-serif;
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
@@ -10897,5 +10881,34 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
+.gallery {
+    display: inline-block;
+    margin-top: 20px;
+}
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+.close-icon{
+    border-radius: 50%;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+    padding: 5px 8px;
+}
+.form-image-upload{
+    background: #e8e8e8 none repeat scroll 0 0;
+    padding: 15px;
+}
+
 
 
