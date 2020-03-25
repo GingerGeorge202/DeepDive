@@ -24,11 +24,11 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1|max:30',
-            'surname'=>'required|min:1|max:30',
-            'email'=>'required|email|min:1|max:30',
-            'phone'=>'required|min:1|max:30|regex:/^\+380\d{9}$/',
-            'city'=>'required|min:1|max:30',
+            'name'=>'required|max:40',
+            'surname'=>'required|max:40',
+            'email'=>'required|email|max:40',
+            'phone'=>'required|max:30|regex:/^\+380\d{9}$/',
+            'city'=>'required|max:40',
         ];
     }
 }

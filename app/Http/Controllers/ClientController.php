@@ -24,10 +24,6 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-//
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,15 +34,7 @@ class ClientController extends Controller
     public function store(ClientRequest $request)
     {
         $client=new Client();
-        $client=$request->all();
-
-//        $client->name = $request->name;
-//        $client->surname = $request->surname;
-//        $client->email = $request->email;
-//        $client->phone = $request->phone;
-//        $client->city = $request->city;
-
-        $client->save();
+        $client->create($request->all());
         return redirect()->route('/');
     }
 
@@ -56,10 +44,6 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -81,13 +65,7 @@ class ClientController extends Controller
      */
     public function update(ClientRequest $request, Client $client)
     {
-        $client->name = $request->name;
-        $client->surname = $request->surname;
-        $client->email = $request->email;
-        $client->phone = $request->phone;
-        $client->city = $request->city;
-
-        $client->update();
+        $client->update($request->all());
 
         return redirect()->route('client.index');
     }

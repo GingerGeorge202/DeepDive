@@ -25,7 +25,7 @@ class FeedbackRequest extends FormRequest
     {
         return [
             'author'=>'min:5|max:50',
-            'describe'=>'min:5|max:300',
+            'describe'=>'min:50|max:500',
             'img'=>'mimes:jpeg,png|max:5000',
         ];
     }

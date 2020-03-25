@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\ImageGallery;
+use App\Course;
+use App\Slider;
+use App\Feedbacks;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -14,9 +16,10 @@ class FrontController extends Controller
      */
     public function index()
     {
-
-        $sliderImages = ImageGallery::get();
-        return view('welcome', compact('sliderImages'));
+        $courses=Course::all();
+        $feedbacks=Feedbacks::all();
+        $sliderImages = Slider::get();
+        return view('welcome', compact(['sliderImages','feedbacks','courses']));
     }
 }
 

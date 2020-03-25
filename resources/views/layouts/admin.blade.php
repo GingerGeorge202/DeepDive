@@ -26,7 +26,7 @@
                 <a class="nav-link" href="{{route('course.index')}}">Курс</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="{{route('feedback.index')}}">Відгуки</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#">Disabled</a>
@@ -34,7 +34,6 @@
         </ul>
     </div>
 </nav>
-<h1>im admin</h1>
 @yield('content')
 <script src="{{asset('js/app.js')}}"></script>
 
