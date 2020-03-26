@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <a href="{{route('feedback.create')}}" class="btn btn-outline-primary m-auto">Новий відгук</a>
+    <a href="{{route('feedback.create')}}" class="btn btn-success m-auto add-new">Новий відгук</a>
     <div class="container-fluid">
         @foreach($feedbacks as $feedback)
 
@@ -21,7 +21,7 @@
                 <form action="{{route('feedback.destroy',$feedback->id)}} " method="post" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-outline-primary">Видалити</button>
+                    <button type="submit" class="btn btn-outline-danger">Видалити</button>
                 </form>
             </div>
         </div>

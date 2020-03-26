@@ -41,7 +41,7 @@
             </div>
             <div class="col-md-2">
                 <br/>
-                <button type="submit" class="btn btn-success">Upload</button>
+                <button type="submit" class="btn btn-success">Завантажити</button>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                         <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST">
                             <input type="hidden" name="_method" value="delete">
                             {!! csrf_field() !!}
-                            <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button type="submit" class="close-icon btn btn-danger f-size"><i class="glyphicon glyphicon-remove"></i></button>
                         </form>
                     </div> <!-- col-6 / end -->
                 @endforeach

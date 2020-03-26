@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
-use App\Slider;
+use App\ImageGallery;
 use App\Feedbacks;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class FrontController extends Controller
     {
         $courses=Course::all();
         $feedbacks=Feedbacks::all();
-        $sliderImages = Slider::get();
+        $sliderImages = ImageGallery::get();
         return view('welcome', compact(['sliderImages','feedbacks','courses']));
     }
 }
