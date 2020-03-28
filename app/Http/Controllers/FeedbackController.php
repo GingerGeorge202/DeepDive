@@ -32,7 +32,7 @@ public function __construct()
      */
     public function create()
     {
-        //
+        return view('feedback.create');
     }
 
     /**
@@ -43,7 +43,8 @@ public function __construct()
      */
     public function store(Request $request)
     {
-        //
+        Feedbacks::create($request->all());
+        return redirect()->route('feedback.index');
     }
 
     /**
@@ -52,10 +53,6 @@ public function __construct()
      * @param  \App\Feedbacks  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function show(Feedbacks $feedback)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -101,6 +98,8 @@ public function __construct()
      */
     public function destroy(Feedbacks $feedback)
     {
-        //
+        $feedback->delete();
+
+        return redirect()->route('feedback.index');
     }
 }
