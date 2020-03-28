@@ -43,3 +43,8 @@ Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy')->name('ima
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
