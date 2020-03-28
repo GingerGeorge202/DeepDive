@@ -200,11 +200,16 @@
           @if($loop->odd)
 
                 <div class="row" id="row1">
-                  <div class="col-5 mr-auto">
-                      <img src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg'}}">
+                  <div class="active1">
+                      <img width="300" height="255" src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg' }}">
+
+                      <div class="col-1 m-auto">
+                  </div>
+                  <p><h2 style = "color:#7722aa">{{$feedback->author}}</h2></p>
                   </div>
                   <div class="col-4 m-auto">
                       <p class="descr" id="p1"><em>{{$feedback->describe}}</em></p>
+
                   </div>
               </div>
 
@@ -213,9 +218,15 @@
               <div class="row ">
                   <div class="col-4 m-auto">
                       <p class="descr" id="p1"><em>{{$feedback->describe}}</em></p>
+
                   </div>
                   <div class="col-5 ml-auto">
-                      <img src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg'}}">
+                      <div class="active1">
+                      <img width="300" height="255" src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg'}}">
+                      <div class="col-1 m-auto">
+                      </div>
+                            <p><h2 style = "color:#7722aa">{{$feedback->author}}</h2></p>
+                      </div>
                   </div>
               </div>
 
