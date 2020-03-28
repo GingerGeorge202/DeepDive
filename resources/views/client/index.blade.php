@@ -30,7 +30,7 @@
                 <form action="{{route('client.destroy',$client->id)}} " method="post" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-outline-primary">Видалити</button>
+                    <button type="submit" class="btn btn-outline-danger">Видалити</button>
                 </form>
                 </th>
             </tr>

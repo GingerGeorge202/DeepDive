@@ -26,7 +26,7 @@ Route::resource('feedback', 'FeedbackController');
 //Route::post('/', 'ClientController@store')->name('client.store');
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::resource('client', 'ClientController');
 //Route::get('post/', 'PostController@index')->name('post.index');
@@ -42,4 +42,9 @@ Route::post('image-gallery', 'ImageGalleryController@store')->name('image-galler
 Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy')->name('image-gallery.destroy');
 
 
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
+

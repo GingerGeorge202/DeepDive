@@ -4540,6 +4540,7 @@ input[type=button].btn-block {
   justify-content: space-between;
   padding: 0.5rem 1rem;
   border-radius: 0;
+  margin-bottom: 0;
 }
 
 .navbar .container,
@@ -4566,7 +4567,7 @@ input[type=button].btn-block {
 
 .navbar-brand:hover,
 .navbar-brand:focus {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .navbar-nav {
@@ -10925,14 +10926,28 @@ a.text-dark:focus {
     padding: 15px;
 }
 .nav>li>a:focus, .nav>li>a:hover {
-    background-color: #58d5ea;
+    background-color: #f9fafc;
 }
 .add-new{
-    float: right;
-    margin-right: 10px;
+    width: 30%;
+    text-align: center;
+    border: 2px solid #d0d0d0;
+    margin: 0 auto 20px auto;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 6px 2px #ccc
 }
 .f-size{
     font-size: 0.9rem;
 }
-
+.descr{
+    font-size: 14px;
+}
+.edit-sec{
+    text-align: center;
+}
+.edit-sec a{
+    margin-bottom: 10px;
+}
 
