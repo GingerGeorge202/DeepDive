@@ -592,3 +592,11 @@ input {
     #last_descr{ margin-left: -20px!important; }
     #plan{ height: 1100px; }
 }
+
+.btn{
+    font-size: 1.6rem;
+}
+
+.h2{
+    font-size: 3.5rem;
+}
