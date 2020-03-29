@@ -281,7 +281,6 @@ a{
     padding: 15px;
 
     background-color: #1b4b72;
-    background-image: url("/public/img/popup.jpg");
     border-radius: 40px;
     z-index: 15;
     position: fixed;
@@ -305,10 +304,6 @@ a{
     align-items: center;
     padding: 15px;
 
-    background-image: url("/public/img/popup.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     position: relative;
     z-index: 5;
 }

@@ -43,7 +43,20 @@ public function __construct()
      */
     public function store(Request $request)
     {
-        Feedbacks::create($request->all());
+        $feedback=new Feedbacks();
+        $feedback->describe = $request->describe;
+        $feedback->author = $request->author;
+
+        if($request->file('img')){
+            $dfile=$feedback->img;
+            $file = basename($dfile);
+            Storage::delete('public/'.$file);
+            $path=Storage::putFile('public',$request->file('img'));
+            $url=Storage::url($path);
+            $feedback->img = $url;
+        }
+
+        $feedback->save();
         return redirect()->route('feedback.index');
     }
 
@@ -99,6 +112,10 @@ public function __construct()
     public function destroy(Feedbacks $feedback)
     {
         $feedback->delete();
+
+        $dfile=$feedback->img;
+        $file = basename($dfile);
+        Storage::delete('public/'.$file);
 
         return redirect()->route('feedback.index');
     }

@@ -59,9 +59,10 @@ class ImageGalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id, ImageGallery $images)
+    public function destroy($id)
     {
-        ImageGallery::find($id)->delete();
+        $images=ImageGallery::find($id);
+        $images->delete();
 
         $dfile=$images->pathImage;
         $file = basename($dfile);

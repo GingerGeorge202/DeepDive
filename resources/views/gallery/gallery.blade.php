@@ -3,7 +3,7 @@
 
 <div class="container">
 
-    <h1>Image Gallery</h1>
+    <h1 class="h1-gallery">Image Gallery</h1>
     <form action="{{ route('image-gallery.store') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">
 
 
@@ -64,7 +64,8 @@
                         </a>
                         <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST">
                             <input type="hidden" name="_method" value="delete">
-                            {!! csrf_field() !!}
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="close-icon btn btn-danger f-size"><i class="glyphicon glyphicon-remove"></i></button>
                         </form>
                     </div> <!-- col-6 / end -->

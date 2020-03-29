@@ -2163,7 +2163,7 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(1.6em + 0.75rem + 2px);
+  height: calc(1.6em + 0.75rem + 7px);
   padding: 0.375rem 0.75rem;
   /*font-size: 0.9rem;*/
   font-weight: 400;
@@ -10931,11 +10931,11 @@ a.text-dark:focus {
     width: 30%;
     text-align: center;
     border: 2px solid #d0d0d0;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px auto;
     padding: 10px;
     border-radius: 0 0 10px 10px;
     box-sizing: border-box;
-    box-shadow: 0 3px 6px 2px #ccc
+    box-shadow: 0 3px 6px 2px #ccc;
 }
 .f-size{
     font-size: 0.9rem;
@@ -10949,4 +10949,19 @@ a.text-dark:focus {
 .edit-sec a{
     margin-bottom: 10px;
 }
-
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    height: 200px;
+}
+input[type=file] {
+    font-size: 14px;
+}
+.h1-gallery{
+    margin-top: 20px;
+}
+.last-input{
+    margin-bottom: 15px;
+}
+#popup{
+    margin-top: 15px;
+    display: none;
+}

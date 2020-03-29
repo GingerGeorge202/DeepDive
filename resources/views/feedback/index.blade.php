@@ -1,8 +1,27 @@
 @extends('layouts.admin')
 @section('content')
     <div class="add-new">
-        <p><b>Додати новий відгук</b></p>
-        <a href="{{route('feedback.create')}}" class="btn btn-success ">Новий відгук</a>
+        <p><b>Новий відгук</b></p>
+        <button class="btn btn-primary" id="button">Створити</button>
+
+        <div id="popup">
+
+            <form action="{{route('feedback.store')}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Автор</label>
+                    <input type="text" name="author" class="form-control" id="exampleFormControlInput1" value="{{$feedback->author ?? ''}}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput2">Опис</label>
+                    <textarea name="describe" rows="5" class="form-control" id="exampleFormControlInput2" required>{{$feedback->describe ?? ''}}</textarea>
+                </div>
+                <input type="file" name="img" class="last-input">
+                <button type="submit" class="btn btn-success">Додати</button>
+            </form>
+
+        </div>
+
     </div>
 
     <div class="container-fluid">
@@ -55,4 +74,13 @@
                 @endif
             @endforeach
     </div>
-    @endsection
+
+
+
+    <script>
+        $("#button").click(function() {
+            $("#popup").toggle();
+        });
+    </script>
+
+@endsection
