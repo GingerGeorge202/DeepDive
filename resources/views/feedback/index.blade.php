@@ -33,6 +33,7 @@
             <div class="col-5 m-auto">
                 <img src="{{$feedback->img ?? 'https://intita.com/images/mainpage/intitaLogo.jpg'}}" width="100%">
             </div>
+
             <div class="col-1 m-auto">
                 <p>{{$feedback->author}}</p>
             </div>
