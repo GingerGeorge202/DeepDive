@@ -17,8 +17,15 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->search) {
+            $clients = Client::all()
+                ->where(        'city', 'like', '%'.$request->search.'%')
+                ->orWhere('name', 'like', '%'.$request->search.'%')
+                ->orWhere('surname', 'like', '%'.$request->search.'%')
+        }
+
         $clients= Client::all();
         return view('client.index',compact('clients'));
     }

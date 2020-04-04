@@ -56,21 +56,29 @@ header{
 #feadback{
     background-image: url(../img/background3.png);
     width: 100%;
-    height: 1800px;
     margin-top: -200px;
     padding-top: 150px;
 
     background-repeat: no-repeat;
 
 }
-#map{
-    background-image: url(../img/map.png);
+.map{
+    /*background-image: url(../img/map.png);*/
 
-    height: 357px;
-    background-position: bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
+    /*height: 357px;*/
+    /*background-position: bottom;*/
+    /*background-size: contain;*/
+    /*background-repeat: no-repeat;*/
+    position: relative;
     margin-bottom: 0;
+}
+.white-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.social{
+    cursor: pointer;
 }
 #foot{
     background-image: url(../img/footer.png);
@@ -368,7 +376,7 @@ input {
     width: 100%;
     height: 45px;
     background: transparent;
-    padding: 0 25px 0 0;
+    padding: 0 28px 0 0;
 }
 
 .input::-webkit-input-placeholder {
@@ -485,7 +493,7 @@ input {
     .about3 p { margin-left: -50px; margin-top: -50px;}
     .about3{ margin-left: 0; }
     #feadback{ height: 1300px; }
-    #map { height: 300px; }
+    /*#map { height: 300px; }*/
     #foot{ height: 75px; }
 }
 @media all and (max-width: 830px){
