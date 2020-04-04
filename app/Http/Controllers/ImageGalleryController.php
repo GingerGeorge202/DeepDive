@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GalleryRequest;
 use App\ImageGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -31,12 +32,8 @@ class ImageGalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
-//        $this->validate($request, [
-//            'title' => 'required',
-//            'pathImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
-//        ]);
 
         $file = new ImageGallery();
 
