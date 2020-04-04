@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Http\Requests\ClientRequest;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
+
 
 class ClientController extends Controller
 {
     public function __construct()
     {
+        //if (!$clients) {
+        //Log :: info ( "Користувач увійшов!");
+        Session::flash('message2', 'ВИ УСПІШНО ЗАРЕЄСТРОВАНІ');
+            //Session::flash ( 'flash_message_error' ,'Ваш аккаунт не активний!' ) ;
+            //return redirect ( $this -> redirectTo ) ; //}
         $this->middleware('auth');
     }
     /**
@@ -20,6 +29,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients= Client::all();
+
         return view('client.index',compact('clients'));
     }
 

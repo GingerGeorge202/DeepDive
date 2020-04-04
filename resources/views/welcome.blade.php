@@ -35,6 +35,10 @@
     </div>
 
   </div>
+
+                @if (Session::has('message2'))
+                    <div class="alert alert-info">{{ Session::get('message2') }}</div>
+                @endif
 </div>
 <div class="Palatino" id="header-text">
 

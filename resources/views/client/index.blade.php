@@ -24,14 +24,17 @@
                 <td>{{$client->phone}}</td>
                 <td>{{$client->city}}</td>
                 <th>
-                    <a href="{{route('client.edit',$client->id)}}" class="btn btn-outline-primary">Редагувати</a>
+                    <a href="{{route('client.edit',jy)}}" class="btn btn-outline-primary">Редагувати</a>
                 </th>
                 <th>
                 <form action="{{route('client.destroy',$client->id)}} " method="post" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger">Видалити</button>
+                    @section('content')
+
                 </form>
+
                 </th>
             </tr>
         @endforeach
