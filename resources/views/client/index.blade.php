@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="search-container">
-        <form class="form-inline my-2 my-lg-2" action="{{route('client.index')}}">
+        <form class="form-inline my-2 my-lg-2 " action="{{route('client.index')}}">
             <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search..."
                    aria-label="Search">
             <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
@@ -12,13 +12,14 @@
     <div>
         @if(isset($_GET['search']))
             @if(count($clients)>0)
-                <p class="lead">Результати по запиту <i>" <?=$_GET['search']?> "</i></p>
+                <p class="lead">Результати по запиту <i>" <?=htmlspecialchars($_GET['search'])?> "</i></p>
                 <p class="lead">Знайдено: {{count($clients)}}</p>
             @else
-                <h2>По запиту <i>" <?=$_GET['search']?> "</i> нічого не найдено (</h2>
+                <h2>Результатів по запиту <i>" <?=htmlspecialchars($_GET['search'])?> "</i> не найдено :(</h2>
                 <a class="btn btn-outline-dark my-2 my-sm-0" href="{{route('client.index')}}">Show all</a><br>
             @endif
         @endif
+    </div>
 
     <table class="table">
         <thead>

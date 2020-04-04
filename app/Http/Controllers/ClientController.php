@@ -29,10 +29,10 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         if ($request->search) {
-            $clients = Client::all()
-                ->where('city', 'like', '%'.$request->search.'%')
+            $clients = Client::where('city', 'like', '%'.$request->search.'%')
                 ->orWhere('name', 'like', '%'.$request->search.'%')
                 ->orWhere('surname', 'like', '%'.$request->search.'%')
+                ->orderBy('clients.created_at', 'desc')
                 ->get();
 
             return view('client.index',compact('clients'));
