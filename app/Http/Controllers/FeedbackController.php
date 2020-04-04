@@ -41,7 +41,7 @@ public function __construct()
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FeedbackRequest $request)
     {
         $feedback=new Feedbacks();
         $feedback->describe = $request->describe;
@@ -56,8 +56,9 @@ public function __construct()
             $feedback->img = $url;
         }
 
+
         $feedback->save();
-        return redirect()->route('feedback.index');
+        return redirect()->route('feedback.index')->with('success','Пост успішно створений');
     }
 
     /**
@@ -100,7 +101,7 @@ public function __construct()
         }
 
         $feedback->update();
-        return redirect()->route('feedback.index');
+        return redirect()->route('feedback.index')->with('success','Пост успішно редагований');
     }
 
     /**
@@ -117,6 +118,6 @@ public function __construct()
         $file = basename($dfile);
         Storage::delete('public/'.$file);
 
-        return redirect()->route('feedback.index');
+        return redirect()->route('feedback.index')->with('success','Пост успішно видалений');
     }
 }

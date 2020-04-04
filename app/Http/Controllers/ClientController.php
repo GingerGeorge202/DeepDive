@@ -30,9 +30,12 @@ class ClientController extends Controller
     {
         if ($request->search) {
             $clients = Client::all()
-                ->where(        'city', 'like', '%'.$request->search.'%')
+                ->where('city', 'like', '%'.$request->search.'%')
                 ->orWhere('name', 'like', '%'.$request->search.'%')
                 ->orWhere('surname', 'like', '%'.$request->search.'%')
+                ->get();
+
+            return view('client.index',compact('clients'));
         }
 
         $clients= Client::all();
@@ -88,7 +91,7 @@ class ClientController extends Controller
     {
         $client->update($request->all());
 
-        return redirect()->route('client.index');
+        return redirect()->route('course.index')->with('success','Успішно редаговано');
     }
 
     /**

@@ -42,7 +42,8 @@
             </div>
             <div class="col-2 m-auto edit-sec">
                 <a href="{{route('feedback.edit',$feedback->id)}}" class="btn btn-outline-primary">Редагувати</a>
-                <form action="{{route('feedback.destroy',$feedback->id)}} " method="post" enctype="multipart/form-data">
+                <form action="{{route('feedback.destroy',$feedback->id)}} " method="post" enctype="multipart/form-data"
+                >
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-outline-danger">Видалити</button>
@@ -55,7 +56,8 @@
                 <div class="row ">
                     <div class="col-2 m-auto edit-sec">
                         <a href="{{route('feedback.edit',$feedback->id)}}" class="btn btn-outline-primary">Редагувати</a>
-                        <form action="{{route('feedback.destroy',$feedback->id)}} " method="post" enctype="multipart/form-data">
+                        <form action="{{route('feedback.destroy',$feedback->id)}} " method="post" enctype="multipart/form-data"
+                              onsubmit=" if (confirm('Точно видалити'))  { return true} else { return false}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-outline-danger">Видалити</button>
