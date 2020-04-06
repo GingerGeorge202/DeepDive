@@ -62,7 +62,7 @@
                                 <small class='text-muted'>{{ $image->title }}</small>
                             </div> <!-- text-center / end -->
                         </a>
-                        <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST">
+                        <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST" onsubmit=" if (confirm('Точно видалити'))  { return true} else { return false}">
                             <input type="hidden" name="_method" value="delete">
                             @csrf
                             @method('DELETE')
