@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class FeedbackController extends Controller
 {
+
+public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,10 +41,24 @@ class FeedbackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FeedbackRequest $request)
     {
-        Feedbacks::create($request->all());
-        return redirect()->route('feedback.index');
+        $feedback=new Feedbacks();
+        $feedback->describe = $request->describe;
+        $feedback->author = $request->author;
+
+        if($request->file('img')){
+            $dfile=$feedback->img;
+            $file = basename($dfile);
+            Storage::delete('public/'.$file);
+            $path=Storage::putFile('public',$request->file('img'));
+            $url=Storage::url($path);
+            $feedback->img = $url;
+        }
+
+
+        $feedback->save();
+        return redirect()->route('feedback.index')->with('success','Пост успішно створений');
     }
 
     /**
@@ -82,7 +101,7 @@ class FeedbackController extends Controller
         }
 
         $feedback->update();
-        return redirect()->route('feedback.index');
+        return redirect()->route('feedback.index')->with('success','Пост успішно редагований');
     }
 
     /**
@@ -95,6 +114,10 @@ class FeedbackController extends Controller
     {
         $feedback->delete();
 
-        return redirect()->route('feedback.index');
+        $dfile=$feedback->img;
+        $file = basename($dfile);
+        Storage::delete('public/'.$file);
+
+        return redirect()->route('feedback.index')->with('success','Пост успішно видалений');
     }
 }

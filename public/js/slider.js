@@ -1,3 +1,4 @@
+
 let slides = document.getElementsByClassName("slide");
 let INDEX = 0;
 
@@ -52,3 +53,4 @@ document.getElementById("right-button").onclick = function(){
 };
 
 render(INDEX);
+

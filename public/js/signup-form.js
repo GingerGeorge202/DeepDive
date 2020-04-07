@@ -2,9 +2,9 @@
 let wrapInput = document.querySelectorAll('.wrap-input');
 let input = document.querySelectorAll('.input');
 
-if (!input.value) {
-    wrapInput.style.marginBottom = '0';
-}
+// if (!input.value) {
+//     wrapInput.style.marginBottom = '0';
+// }
 
 
 $().ready(function() {
@@ -21,7 +21,7 @@ $().ready(function() {
             name: "Введіть ім'я",
             surname: "Введіть прізвище",
             email: "Введіть імейл",
-            phone: "Введіть номер телефону",
+            phone: "Введіть номер починаючи з  +38",
             city: "Введіть місто"
         },
     })

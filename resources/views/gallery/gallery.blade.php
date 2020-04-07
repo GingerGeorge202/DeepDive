@@ -1,86 +1,98 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Image Gallery Example</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- References: https://github.com/fancyapps/fancyBox -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+@extends('layouts.admin')
+@section('style')
+    <meta name="_token" content="{{ csrf_token() }}">
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>--}}
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous" />--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" integrity="sha256-jKV9n9bkk/CTP8zbtEtnKaKf+ehRovOYeKoyfthwbC8=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js" integrity="sha256-CgvH7sz3tHhkiVKh05kSUgG97YtzYNnWt6OXcmYzqHY=" crossorigin="anonymous"></script>
+@endsection
 
-
-    <style type="text/css">
-        .gallery
-        {
-            display: inline-block;
-            margin-top: 20px;
-        }
-        .close-icon{
-            border-radius: 50%;
-            position: absolute;
-            right: 5px;
-            top: -10px;
-            padding: 5px 8px;
-        }
-        .form-image-upload{
-            background: #e8e8e8 none repeat scroll 0 0;
-            padding: 15px;
-        }
-    </style>
-</head>
-<body>
-
+@section('content')
 
 <div class="container">
 
-
-    <h3>Laravel - Image Gallery CRUD Example</h3>
-    <form action="{{ route('image-gallery.store') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">
-
-
-        {!! csrf_field() !!}
+    <h1 class="h1-gallery">Галерея картинок для сайту</h1>
+    <input type="file" name="image" class="image">
+{{--    <form action="{{ route('image-gallery.store') }}" class="form-image-upload" method="POST" enctype="multipart/form-data">--}}
 
 
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+{{--        {!! csrf_field() !!}--}}
+
+
+{{--        @if (count($errors) > 0)--}}
+{{--            <div class="alert alert-danger">--}}
+{{--                <strong>Отакої!</strong> Виникла проблема з заповненням деяких полів.<br><br>--}}
+{{--                <ul>--}}
+{{--                    @foreach ($errors->all() as $error)--}}
+{{--                        <li>{{ $error }}</li>--}}
+{{--                    @endforeach--}}
+{{--                </ul>--}}
+{{--            </div>--}}
+{{--        @endif--}}
+
+
+{{--        @if ($message = Session::get('success'))--}}
+{{--            <div class="alert alert-success alert-block">--}}
+{{--                <button type="button" class="close" data-dismiss="alert">×</button>--}}
+{{--                <strong>{{ $message }}</strong>--}}
+{{--            </div>--}}
+{{--        @endif--}}
+
+
+{{--        <div class="row">--}}
+{{--            <div class="col-md-5">--}}
+{{--                <strong>Назва:</strong>--}}
+{{--                <input type="text" name="title" class="form-control" placeholder="Title">--}}
+{{--            </div>--}}
+{{--            <div class="col-md-5">--}}
+{{--                <strong>Картинка:</strong>--}}
+{{--                <input type="file" name="image" class="form-control">--}}
+{{--            </div>--}}
+{{--            <div class="col-md-2">--}}
+{{--                <br/>--}}
+{{--                <button type="submit" class="btn btn-success">Завантажити</button>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+{{--    </form>--}}
+</div>
+
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-5">
+                    <strong>Напишіть назву:</strong>
+                    <input id="title" type="text" name="title" class="form-control" placeholder="Title" required>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
             </div>
-        @endif
-
-
-        @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
+            <div class="modal-body">
+                <div class="img-container">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <img id="image" src="https://avatars0.githubusercontent.com/u/3456749">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="preview"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        @endif
-
-
-        <div class="row">
-            <div class="col-md-5">
-                <strong>Title:</strong>
-                <input type="text" name="title" class="form-control" placeholder="Title">
-            </div>
-            <div class="col-md-5">
-                <strong>Image:</strong>
-                <input type="file" name="image" class="form-control">
-            </div>
-            <div class="col-md-2">
-                <br/>
-                <button type="submit" class="btn btn-success">Upload</button>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="crop">Crop</button>
             </div>
         </div>
+    </div>
+</div>
 
-
-    </form>
-
-
+<div class="container">
     <div class="row">
         <div class='list-group gallery'>
 
@@ -94,10 +106,11 @@
                                 <small class='text-muted'>{{ $image->title }}</small>
                             </div> <!-- text-center / end -->
                         </a>
-                        <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST">
+                        <form action="{{ route('image-gallery.destroy', $image->id)  }}" method="POST" onsubmit=" if (confirm('Бажаєте видалити?'))  { return true} else { return false}">
                             <input type="hidden" name="_method" value="delete">
-                            {!! csrf_field() !!}
-                            <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="close-icon btn btn-danger f-size"><i class="glyphicon glyphicon-remove"></i></button>
                         </form>
                     </div> <!-- col-6 / end -->
                 @endforeach
@@ -109,9 +122,6 @@
 </div> <!-- container / end -->
 
 
-</body>
-
-
 <script type="text/javascript">
     $(document).ready(function(){
         $(".fancybox").fancybox({
@@ -120,4 +130,77 @@
         });
     });
 </script>
-</html>
+
+<script type="text/javascript">
+
+    var $modal = $('#modal');
+    var image = document.getElementById('image');
+    var cropper;
+
+    $("body").on("change", ".image", function(e){
+        var files = e.target.files;
+        var done = function (url) {
+            image.src = url;
+            $modal.modal('show');
+        };
+        var reader;
+        var file;
+        var url;
+
+        if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function (e) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+    $modal.on('shown.bs.modal', function () {
+        cropper = new Cropper(image, {
+            aspectRatio: 14/9,
+            viewMode: 3,
+            preview: '.preview'
+        });
+    }).on('hidden.bs.modal', function () {
+        cropper.destroy();
+        cropper = null;
+    });
+
+    $("#crop").click(function(){
+        canvas = cropper.getCroppedCanvas({
+            width: 460,
+            height: 460,
+        });
+
+        canvas.toBlob(function(blob) {
+            url = URL.createObjectURL(blob);
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = function() {
+                var base64data = reader.result;
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: "image-gallery/upload",
+                    data: {'_token': $('meta[name="_token"]').attr('content'), 'image': base64data, 'title': $('#title').val()},
+                    success: function(data){
+                        $modal.modal('hide');
+                        alert("Картинка успішно додана!");
+                        location.reload();
+                    }
+                });
+            }
+        });
+    })
+
+</script>
+
+@endsection

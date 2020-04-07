@@ -29,12 +29,12 @@ class DatabaseSeeder extends Seeder
         DB::table('courses')->insert($courses);
 
         $images=[
-            ['title'=>'1','image'=>'img/gal1.png'],
-            ['title'=>'2','image'=>'img/gal2.png'],
-            ['title'=>'3','image'=>'img/gal3.png'],
-            ['title'=>'4','image'=>'img/gal4.png'],
-            ['title'=>'5','image'=>'img/gal5.png'],
-            ['title'=>'6','image'=>'img/gal6.png'],
+            ['title'=>'1','pathImage'=>'img/gal1.png'],
+            ['title'=>'2','pathImage'=>'img/gal2.png'],
+            ['title'=>'3','pathImage'=>'img/gal3.png'],
+            ['title'=>'4','pathImage'=>'img/gal4.png'],
+            ['title'=>'5','pathImage'=>'img/gal5.png'],
+            ['title'=>'6','pathImage'=>'img/gal6.png'],
         ];
         DB::table('image_gallery')->insert($images);
     }
