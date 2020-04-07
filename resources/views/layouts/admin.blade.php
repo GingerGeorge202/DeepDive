@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/admin-style.css')}}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    @yield('style')
     <title>My admin</title>
 </head>
 <body>
